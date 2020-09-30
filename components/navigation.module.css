@@ -1,0 +1,9 @@
+.banner {
+    background-image: linear-gradient(to right,#2b6cb0,black,#2b6cb0);
+    border-radius: .5rem;
+    display: flex;
+    padding: 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
