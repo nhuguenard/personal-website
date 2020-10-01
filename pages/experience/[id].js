@@ -1,5 +1,6 @@
 import Layout from '../../components/layout'
 import { getAllExperienceIds, getExperienceData } from '../../lib/experiences'
+import styles from "./experience.module.css";
 import Head from 'next/head'
 import Date from '../../components/date'
 import utilStyles from '../../styles/utils.module.css'
@@ -12,9 +13,11 @@ export default function Experience({ experienceData }) {
             </Head>
             <article>
                 <h1 className={utilStyles.headingXl}>{experienceData.title}</h1>
+                <h3 className={styles.company}>{experienceData.company}</h3>
                 <div className={utilStyles.lightText}>
-                    <Date dateString={experienceData.startDate} />
-                </div>
+                    <Date dateString={experienceData.startDate} /> - {experienceData.endDate && <Date dateString={experienceData.endDate} />}
+                </div>  
+                <br/>
                 <div dangerouslySetInnerHTML={{ __html: experienceData.contentHtml }} />   
             </article>
         </Layout>

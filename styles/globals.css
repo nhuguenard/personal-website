@@ -29,4 +29,9 @@ img {
   display: block
 }
 
+ul {
+  list-style-type:disc;
+  padding: revert;
+}
+
 @tailwind utilities;

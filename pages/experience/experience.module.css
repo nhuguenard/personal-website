@@ -5,6 +5,10 @@
     width: 50%;
 }
 
+.content:hover{
+  cursor: pointer;
+}
+
 .containerLeft::after {
     content: '';
     position: absolute;
