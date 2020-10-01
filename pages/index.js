@@ -13,10 +13,6 @@ export default function Home({latestPost}) {
       </Head>
       <section className={utilStyles.headingMd}>
         <p>Hello, I'm <b>Nick Huguenard</b>. I'm a senior software consulatant at Configit, Inc. I love problem solving and learning new things.</p>
-        <p>
-          (This is a sample website - you’ll be building a site like this on{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Latest Blog Post</h2>
