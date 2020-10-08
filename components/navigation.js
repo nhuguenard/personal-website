@@ -5,7 +5,9 @@ export default function Navigation({name}) {
   return (
     <nav className={styles.banner}>
       <div class="flex items-center flex-shrink-0 text-white mr-6">
-        <span class="font-semibold text-xl tracking-tight">{name}</span>
+        <Link href="/"> 
+          <span class="font-semibold text-xl tracking-tight">{name}</span>
+        </Link>
       </div>
       <div class="block lg:hidden">
         <button class="flex items-center px-3 py-2 border rounded text-blue-200 border-blue-400 hover:text-white hover:border-white">

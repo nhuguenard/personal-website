@@ -12,7 +12,7 @@ export default function Home({latestPost}) {
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>Hello, I'm <b>Nick Huguenard</b>. I'm a senior software consulatant at Configit, Inc. I love problem solving and learning new things.</p>
+        <p>Hello, I'm <b>Nick Huguenard</b>. I'm a senior software consulatant at Configit, Inc. I love problem solving and learning new things. This webiste is my playground for trying new things and learning Next.js</p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Latest Blog Post</h2>
