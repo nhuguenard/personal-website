@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+
 html,
 body {
   padding: 0;
@@ -25,3 +28,10 @@ img {
   max-width: 100%;
   display: block
 }
+
+ul {
+  list-style-type:disc;
+  padding: revert;
+}
+
+@tailwind utilities;
