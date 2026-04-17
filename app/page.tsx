@@ -107,7 +107,14 @@ export default function Home() {
 
         <Container maxWidth="lg" sx={{ position: 'relative' }}>
           <Grid container spacing={6} sx={{ alignItems: 'center' }}>
-            <Typography variant="h1" gutterBottom sx={{ font: 'Geist', fontSize: { xs: '4rem', md: '6rem'} }}>Nick Huguenard</Typography>
+            <Typography variant="h1" gutterBottom sx={{ 
+              p:1.5,
+              font: 'Geist', 
+              fontSize: { xs: '4rem', md: '6rem'},
+              background: 'linear-gradient(135deg, #6366F1, #A855F7, #22D3EE)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+               }}>Nick Huguenard</Typography>
           </Grid>
           <Grid container spacing={6} sx={{ alignItems: 'center' }} >
             <Grid size={{ xs: 12, md: 7 }}>
