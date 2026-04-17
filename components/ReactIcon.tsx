@@ -1,5 +1,5 @@
 'use client';
-import SvgIcon from '@mui/material/SvgIcon';
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
 
 const ReactIcon: React.FC<SvgIconProps> = (props) => {
   return (

@@ -1,7 +1,7 @@
 'use client'
 import Avatar from '@mui/material/Avatar';
 import Timeline from '@mui/lab/Timeline';
-import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
+import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
@@ -11,12 +11,9 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Image from "next/image";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 
@@ -39,8 +36,6 @@ export default function Experience() {
                 src="/configit.jpg"
                 className="dark:invert"
                 alt="Configit"
-                width={20}
-                height={20}
               />
             </TimelineDot>
             <TimelineConnector />
@@ -87,8 +82,6 @@ export default function Experience() {
                 src="/configit.jpg"
                 className="dark:invert"
                 alt="Configit"
-                width={20}
-                height={20}
               />
             </TimelineDot>
             <TimelineConnector />
@@ -131,8 +124,6 @@ export default function Experience() {
                 src="/configit.jpg"
                 className="dark:invert"
                 alt="Configit"
-                width={20}
-                height={20}
               />
             </TimelineDot>
             <TimelineConnector />
@@ -178,8 +169,6 @@ documentation." />
                 src="/universal-avionics-logo.png"
                 className="dark:invert"
                 alt="Universal Avionics"
-                width={20}
-                height={20}
               />
             </TimelineDot>
             <TimelineConnector />
@@ -226,8 +215,6 @@ standards.
                 src="/windham_brannon_logo.jpg"
                 className="dark:invert"
                 alt="Windham Brannon"
-                width={20}
-                height={20}
               />
             </TimelineDot>
             <TimelineConnector />

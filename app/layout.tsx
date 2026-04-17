@@ -5,8 +5,8 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { Roboto } from 'next/font/google';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import theme from '../theme';
-import MenuBar from '../components/menu';
-import Box from '@mui/material/Box';
+import FloatingDockNav from '@/components/floatingMenu';
+import { geist, inter } from './fonts';
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -35,19 +35,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html
       lang="en"
-      className={`${roboto.variable} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${roboto.variable} ${geistSans.variable} ${geistMono.variable} ${geist.variable} ${inter.variable}h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <MenuBar />
+     
 
               {children}
-
+<FloatingDockNav
+        
+      />
 
           </ThemeProvider>
         </AppRouterCacheProvider>

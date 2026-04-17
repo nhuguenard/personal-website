@@ -59,51 +59,51 @@ const theme = createTheme({
   },
 
   typography: {
-    fontFamily: [
-      'Inter',
-      'system-ui',
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'sans-serif',
-    ].join(','),
+    fontFamily: 'var(--font-inter), Inter, system-ui, sans-serif',
+
     h1: {
+      fontFamily: 'var(--font-geist), Geist, var(--font-inter), sans-serif',
       fontWeight: 700,
       letterSpacing: '-0.03em',
       lineHeight: 1.05,
     },
     h2: {
+      fontFamily: 'var(--font-geist), Geist, var(--font-inter), sans-serif',
       fontWeight: 700,
       letterSpacing: '-0.025em',
       lineHeight: 1.1,
     },
     h3: {
+      fontFamily: 'var(--font-geist), Geist, var(--font-inter), sans-serif',
       fontWeight: 700,
       letterSpacing: '-0.02em',
-      lineHeight: 1.15,
     },
     h4: {
+      fontFamily: 'var(--font-geist), Geist, var(--font-inter), sans-serif',
       fontWeight: 600,
       letterSpacing: '-0.015em',
     },
     h5: {
+      fontFamily: 'var(--font-geist), Geist, var(--font-inter), sans-serif',
       fontWeight: 600,
-      letterSpacing: '-0.01em',
     },
     h6: {
+      fontFamily: 'var(--font-geist), Geist, var(--font-inter), sans-serif',
       fontWeight: 600,
     },
     subtitle1: {
-      color: brand.textSecondary,
+      fontFamily: 'var(--font-inter), Inter, system-ui, sans-serif',
     },
     body1: {
+      fontFamily: 'var(--font-inter), Inter, system-ui, sans-serif',
       lineHeight: 1.7,
     },
     body2: {
+      fontFamily: 'var(--font-inter), Inter, system-ui, sans-serif',
       lineHeight: 1.6,
-      color: brand.textSecondary,
     },
     button: {
+      fontFamily: 'var(--font-inter), Inter, system-ui, sans-serif',
       textTransform: 'none',
       fontWeight: 600,
       letterSpacing: '-0.01em',
@@ -211,7 +211,7 @@ const theme = createTheme({
           paddingInline: 18,
           paddingBlock: 10,
         },
-        outlinedPrimary: {
+        outlined: {
           borderColor: alpha(brand.primary, 0.45),
           color: brand.textPrimary,
           '&:hover': {
@@ -219,7 +219,7 @@ const theme = createTheme({
             backgroundColor: alpha(brand.primary, 0.08),
           },
         },
-        textPrimary: {
+        text: {
           '&:hover': {
             backgroundColor: alpha(brand.primary, 0.08),
           },

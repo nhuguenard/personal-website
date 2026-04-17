@@ -1,5 +1,4 @@
-import {NextResponse} from 'next/server';
-import type {NextRequest} from 'next/request';
+import {NextResponse, NextRequest} from 'next/server';
 
 export function proxy( req: NextRequest ){
   const {pathname, origin} = req.nextUrl;
