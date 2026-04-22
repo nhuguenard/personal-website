@@ -35,8 +35,18 @@ export default function TurnstileWidget({
 }: Props) {
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const widgetIdRef = React.useRef<string | null>(null);
+  const onVerifyRef = React.useRef(onVerify);
+  const onExpireRef = React.useRef(onExpire);
 
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
+  React.useEffect(() => {
+    onVerifyRef.current = onVerify;
+  }, [onVerify]);
+
+  React.useEffect(() => {
+    onExpireRef.current = onExpire;
+  }, [onExpire]);
 
   const renderWidget = React.useCallback(() => {
     if (!siteKey || !containerRef.current || !window.turnstile) {
@@ -44,18 +54,17 @@ export default function TurnstileWidget({
     }
 
     if (widgetIdRef.current) {
-      window.turnstile.remove(widgetIdRef.current);
-      widgetIdRef.current = null;
+      return;
     }
 
     widgetIdRef.current = window.turnstile.render(containerRef.current, {
       sitekey: siteKey,
-      callback: onVerify,
-      'expired-callback': onExpire,
-      'error-callback': onExpire,
+      callback: (token) => onVerifyRef.current(token),
+      'expired-callback': () => onExpireRef.current(),
+      'error-callback': () => onExpireRef.current(),
       theme,
     });
-  }, [onExpire, onVerify, siteKey, theme]);
+  }, [siteKey, theme]);
 
   React.useEffect(() => {
     renderWidget();
@@ -63,6 +72,7 @@ export default function TurnstileWidget({
     return () => {
       if (widgetIdRef.current && window.turnstile) {
         window.turnstile.remove(widgetIdRef.current);
+        widgetIdRef.current = null;
       }
     };
   }, [renderWidget]);
