@@ -86,6 +86,7 @@ export default function About() {
               <CardContent sx={{ p: 3.5 }}>
                 <Stack spacing={3} sx={{ alignItems: 'center' }}>
                   <Avatar
+                  src="/headshot.jpg"
                     sx={{ width: 128, height: 128, fontSize: '2.5rem', bgcolor: 'primary.main' }}
                   >
                     NH
