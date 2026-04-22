@@ -120,7 +120,7 @@ export default function Contact() {
             </Stack>
           </Grid>
 
-          <Grid size={{xs: 12, md: 7 }}>
+          <Grid size={{ xs: 12, md: 7 }}>
             <Card>
               <CardContent sx={{ p: { xs: 3, md: 4 } }}>
                 <ContactForm />
@@ -142,7 +142,7 @@ type ContactRowProps = {
 
 function ContactRow({ icon, label, value, href }: ContactRowProps) {
   return (
-    <Stack direction="row" spacing={1.5} sx={{alignItems: 'center'}} >
+    <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center' }} >
       <Box
         sx={(theme) => ({
           width: 40,
@@ -187,7 +187,9 @@ function ContactRow({ icon, label, value, href }: ContactRowProps) {
 function ContactForm() {
   const [turnstileToken, setTurnstileToken] = React.useState('');
   const [state, formAction, pending] = useActionState(sendContactEmail, initialState);
-
+  const handleTurnstileExpire = React.useCallback(() => {
+    setTurnstileToken('');
+  }, []);
   return (
     <Stack component="form" action={formAction} spacing={2.5} sx={{ position: 'relative' }}>
       <Stack spacing={1}>
@@ -207,7 +209,7 @@ function ContactForm() {
       ) : null}
 
       <Grid container spacing={2}>
-        <Grid size={{xs: 12, sm: 6 }}>
+        <Grid size={{ xs: 12, sm: 6 }}>
           <TextField
             fullWidth
             required
@@ -218,7 +220,7 @@ function ContactForm() {
           />
         </Grid>
 
-        <Grid size={{xs: 12, sm: 6}}>
+        <Grid size={{ xs: 12, sm: 6 }}>
           <TextField
             fullWidth
             required
@@ -276,7 +278,7 @@ function ContactForm() {
 
       <TurnstileWidget
         onVerify={setTurnstileToken}
-        onExpire={() => setTurnstileToken('')}
+        onExpire={handleTurnstileExpire}
         theme="auto"
       />
 
