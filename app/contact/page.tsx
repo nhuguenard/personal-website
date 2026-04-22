@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
+import { useActionState } from 'react';
 import {
   Alert,
   Box,
@@ -20,7 +21,14 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import DescriptionRoundedIcon from '@mui/icons-material/DescriptionRounded';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
-import { sendEmail } from '@/app/actions/sendEmail';
+import { sendContactEmail } from '@/app/actions/sendEmail';
+import TurnstileWidget from '@/components/TurnstileWidget';
+
+const initialState = {
+  success: false,
+  message: '',
+  fieldErrors: {},
+};
 
 export default function Contact() {
   return (
@@ -103,8 +111,8 @@ export default function Contact() {
                     </Typography>
                     <Typography color="text.secondary">
                       Staff and principal-level opportunities where I can contribute
-                      through architecture, full-stack engineering, system design, and
-                      debugging.
+                      through architecture, full-stack engineering, system design,
+                      debugging, and practical AI-aware product thinking.
                     </Typography>
                   </Stack>
                 </CardContent>
@@ -112,7 +120,7 @@ export default function Contact() {
             </Stack>
           </Grid>
 
-          <Grid size={{ xs: 12, md: 7 }}>
+          <Grid size={{xs: 12, md: 7 }}>
             <Card>
               <CardContent sx={{ p: { xs: 3, md: 4 } }}>
                 <ContactForm />
@@ -134,7 +142,7 @@ type ContactRowProps = {
 
 function ContactRow({ icon, label, value, href }: ContactRowProps) {
   return (
-    <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center' }} >
+    <Stack direction="row" spacing={1.5} sx={{alignItems: 'center'}} >
       <Box
         sx={(theme) => ({
           width: 40,
@@ -177,115 +185,113 @@ function ContactRow({ icon, label, value, href }: ContactRowProps) {
 }
 
 function ContactForm() {
-  const [values, setValues] = React.useState({
-    name: '',
-    email: '',
-    company: '',
-    message: '',
-  });
-
-  const [status, setStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
-  const [loading, setLoading] = React.useState(false);
-  const handleChange =
-    (field: keyof typeof values) =>
-      (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setValues((prev) => ({ ...prev, [field]: event.target.value }));
-      };
-
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setLoading(true);
-
-    const formData = new FormData(event.currentTarget);
-
-    const result = await sendEmail(formData);
-
-    if (result.success) {
-      setStatus('success');
-    } else {
-      setStatus('error');
-    }
-
-    setLoading(false);
-  };
+  const [turnstileToken, setTurnstileToken] = React.useState('');
+  const [state, formAction, pending] = useActionState(sendContactEmail, initialState);
 
   return (
-    <Stack component="form" spacing={2.5} onSubmit={handleSubmit}>
+    <Stack component="form" action={formAction} spacing={2.5} sx={{ position: 'relative' }}>
       <Stack spacing={1}>
         <Typography variant="overline" color="info.main">
           Send a message
         </Typography>
         <Typography variant="h4">Start the conversation</Typography>
         <Typography color="text.secondary">
-          The form below opens your email client with the message pre-filled. If you’d rather email directly, use the contact details on the left.
+          Reach out about staff, principal, architecture, or consulting opportunities.
         </Typography>
       </Stack>
 
-      {status === 'success' && (
-        <Alert severity="success">
-          Message sent successfully — I’ll get back to you soon.
+      {state.message ? (
+        <Alert severity={state.success ? 'success' : 'error'}>
+          {state.message}
         </Alert>
-      )}
-
-      {status === 'error' && (
-        <Alert severity="error">
-          Something went wrong. Please try again or email me directly.
-        </Alert>
-      )}
+      ) : null}
 
       <Grid container spacing={2}>
-        <Grid size={{ xs: 12, sm: 6 }}>
+        <Grid size={{xs: 12, sm: 6 }}>
           <TextField
             fullWidth
             required
-            label="name"
             name="name"
-            value={values.name}
-            onChange={handleChange('name')}
+            label="Name"
+            error={Boolean((state.fieldErrors)?.name?.length)}
+            helperText={(state.fieldErrors)?.name?.[0]}
           />
         </Grid>
-        <Grid size={{ xs: 12, sm: 6 }}>
+
+        <Grid size={{xs: 12, sm: 6}}>
           <TextField
             fullWidth
             required
-            label="email"
             name="email"
             type="email"
-            value={values.email}
-            onChange={handleChange('email')}
+            label="Email"
+            error={Boolean((state.fieldErrors)?.email?.length)}
+            helperText={(state.fieldErrors)?.email?.[0]}
           />
         </Grid>
+
         <Grid size={12}>
           <TextField
             fullWidth
-            label="company"
             name="company"
-            value={values.company}
-            onChange={handleChange('company')}
+            label="Company"
+            error={Boolean((state.fieldErrors)?.company?.length)}
+            helperText={(state.fieldErrors)?.company?.[0]}
           />
         </Grid>
+
         <Grid size={12}>
           <TextField
             fullWidth
             required
-            label="message"
             name="message"
+            label="Message"
             multiline
             minRows={6}
-            value={values.message}
-            onChange={handleChange('message')}
+            error={Boolean((state.fieldErrors)?.message?.length)}
+            helperText={(state.fieldErrors)?.message?.[0]}
           />
         </Grid>
       </Grid>
+
+      <Box
+        sx={{
+          position: 'absolute',
+          left: '-9999px',
+          width: 1,
+          height: 1,
+          overflow: 'hidden',
+        }}
+        aria-hidden="true"
+      >
+        <TextField
+          tabIndex={-1}
+          autoComplete="off"
+          name="website"
+          label="Website"
+        />
+      </Box>
+
+      <input type="hidden" name="turnstileToken" value={turnstileToken} />
+
+      <TurnstileWidget
+        onVerify={setTurnstileToken}
+        onExpire={() => setTurnstileToken('')}
+        theme="auto"
+      />
 
       <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
         <Button
           type="submit"
           variant="contained"
-          disabled={loading}
+          color="primary"
           endIcon={<SendRoundedIcon />}
+          disabled={pending || !turnstileToken}
         >
-          {loading ? 'Sending...' : 'Send Message'}
+          {pending ? 'Sending...' : 'Send Message'}
+        </Button>
+        <Button component={Link} href="mailto:huguenardnr@gmail.com" variant="outlined" color="primary">
+          Email Directly
         </Button>
       </Stack>
     </Stack>
