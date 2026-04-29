@@ -26,8 +26,31 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nick Huguenard",
-  description: "Principal Software Engineer",
+  metadataBase: new URL('https://nickhuguenard.com'),
+  title: {
+    default: 'Nick Huguenard | Principal Software Engineer',
+    template: '%s | Nick Huguenard',
+  },
+  description:
+    'Principal Software Engineer and Systems Architect with 10+ years of experience in C#, .NET, SQL, React, TypeScript, performance optimization, debugging, and enterprise software architecture.',
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Nick Huguenard | Principal Software Engineer',
+    description:
+      'Principal Software Engineer specializing in scalable systems, architecture, debugging, and performance optimization.',
+    url: 'https://nickhuguenard.com',
+    siteName: 'Nick Huguenard',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Nick Huguenard | Principal Software Engineer',
+    description:
+      'Systems Architect focused on scalable software, performance, debugging, and full-stack engineering.',
+  },
 };
 
 export default function RootLayout({
@@ -45,12 +68,12 @@ export default function RootLayout({
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-     
 
-              {children}
-<FloatingDockNav
-        
-      />
+
+            {children}
+            <FloatingDockNav
+
+            />
 
           </ThemeProvider>
         </AppRouterCacheProvider>
