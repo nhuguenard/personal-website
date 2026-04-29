@@ -44,6 +44,7 @@ export const metadata: Metadata = {
     siteName: 'Nick Huguenard',
     type: 'website',
     locale: 'en_US',
+    images: ['/opengraph-image'],
   },
   twitter: {
     card: 'summary_large_image',
