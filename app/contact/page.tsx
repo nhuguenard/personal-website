@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { useActionState } from 'react';
 import {
   Alert,
@@ -23,6 +24,15 @@ import DescriptionRoundedIcon from '@mui/icons-material/DescriptionRounded';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import { sendContactEmail } from '@/app/actions/sendEmail';
 import TurnstileWidget from '@/components/TurnstileWidget';
+
+export const metadata: Metadata = {
+  title: 'Contact',
+  description:
+    'Contact Nick Huguenard for staff, principal, architecture-focused software engineering opportunities, consulting, and technical leadership roles.',
+  alternates: {
+    canonical: '/contact',
+  },
+};
 
 const initialState = {
   success: false,

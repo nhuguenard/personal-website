@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import Image from 'next/image';
+import type { Metadata } from 'next';
 import {
   Avatar,
   Box,
@@ -19,6 +20,16 @@ import SpeedOutlinedIcon from '@mui/icons-material/SpeedOutlined';
 import TroubleshootOutlinedIcon from '@mui/icons-material/TroubleshootOutlined';
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 import PsychologyAltOutlinedIcon from '@mui/icons-material/PsychologyAltOutlined';
+
+
+export const metadata: Metadata = {
+  title: 'About',
+  description:
+    'Learn more about Nick Huguenard, a principal-level software engineer specializing in system architecture, performance optimization, debugging, and complex enterprise software.',
+  alternates: {
+    canonical: '/about',
+  },
+};
 
 const strengths = [
   {
