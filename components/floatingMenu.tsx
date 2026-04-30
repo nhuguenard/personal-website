@@ -33,6 +33,7 @@ export type FloatingDockItem = {
 };
 
 type FloatingDockNavProps = {
+  activePath: string;
   items?: FloatingDockItem[];
 };
 
