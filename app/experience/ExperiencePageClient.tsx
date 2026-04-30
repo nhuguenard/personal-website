@@ -127,7 +127,9 @@ const careerStats = [
 
 export default function ExperiencePageClient() {
   const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'), {
+    noSsr: true,
+  });
 
   return (
     <Box sx={{ py: { xs: 10, md: 14 } }}>

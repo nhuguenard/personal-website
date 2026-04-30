@@ -86,8 +86,8 @@ export default function Contact() {
                     <ContactRow
                       icon={<GitHubIcon fontSize="small" />}
                       label="GitHub"
-                      value="github.com/nickhuguenard"
-                      href="https://github.com/nickhuguenard"
+                      value="github.com/nhuguenard"
+                      href="https://github.com/nhuguenard"
                     />
 
                     <ContactRow

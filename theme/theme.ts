@@ -1,6 +1,6 @@
 'use client';
 
-import { alpha, createTheme } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 
 const shared = {
   primary: '#6366F1',

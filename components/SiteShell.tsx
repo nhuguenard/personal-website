@@ -146,7 +146,7 @@ function SiteFooter() {
               />
               <SocialButton
                 label="GitHub"
-                href="https://github.com/nickhuguenard"
+                href="https://github.com/nhuguenard"
                 icon={<GitHubIcon fontSize="small" />}
               />
               <SocialButton
