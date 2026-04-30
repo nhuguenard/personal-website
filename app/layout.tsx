@@ -1,29 +1,21 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import { Roboto } from 'next/font/google';
-import { ThemeProvider, CssBaseline, InitColorSchemeScript } from '@mui/material';
-import theme from '../theme/theme';
-import { geist, inter } from './fonts';
-import SiteShell from '@/components/SiteShell';
+import * as React from 'react';
+import type { Metadata } from 'next';
+import { Geist, Inter } from 'next/font/google';
+import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
+
 import ThemeRegistry from '@/components/ThemeRegistry';
+import SiteShell from '@/components/SiteShell';
 
-const roboto = Roboto({
-  weight: ['300', '400', '500', '700'],
+const geist = Geist({
   subsets: ['latin'],
+  variable: '--font-geist',
   display: 'swap',
-  variable: '--font-roboto',
 });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -45,33 +37,40 @@ export const metadata: Metadata = {
     siteName: 'Nick Huguenard',
     type: 'website',
     locale: 'en_US',
-    images: ['/opengraph-image'],
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Nick Huguenard | Principal Software Engineer',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Nick Huguenard | Principal Software Engineer',
     description:
       'Systems Architect focused on scalable software, performance, debugging, and full-stack engineering.',
+    images: ['/opengraph-image'],
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-
+}) {
   return (
     <html
       lang="en"
-      className={`${roboto.variable} ${geistSans.variable} ${geistMono.variable} ${geist.variable} ${inter.variable} h-full antialiased`}
+      className={`${geist.variable} ${inter.variable}`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
+      <body>
         <InitColorSchemeScript attribute="data" defaultMode="dark" />
+
         <ThemeRegistry>
-          <SiteShell>
-            {children}
-          </SiteShell>
+          <SiteShell>{children}</SiteShell>
         </ThemeRegistry>
       </body>
     </html>

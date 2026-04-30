@@ -25,6 +25,7 @@ import MailRoundedIcon from '@mui/icons-material/MailRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import { useColorScheme } from '@mui/material/styles';
+import WorkspacesRoundedIcon from '@mui/icons-material/WorkspacesRounded';
 
 export type FloatingDockItem = {
   label: string;
@@ -41,6 +42,7 @@ const defaultItems: FloatingDockItem[] = [
   { label: 'Home', href: '/', icon: <HomeRoundedIcon fontSize="small" /> },
   { label: 'About', href: '/about', icon: <PersonRoundedIcon fontSize="small" /> },
   { label: 'Experience', href: '/experience', icon: <WorkRoundedIcon fontSize="small" /> },
+  { label: 'Projects', href: '/projects', icon: <WorkspacesRoundedIcon fontSize="small" /> },
   { label: 'Resume', href: '/resume', icon: <DescriptionRoundedIcon fontSize="small" /> },
   { label: 'Contact', href: '/contact', icon: <MailRoundedIcon fontSize="small" /> },
 ];
@@ -48,7 +50,9 @@ const defaultItems: FloatingDockItem[] = [
 export default function FloatingDockNav({ items = defaultItems }: FloatingDockNavProps) {
   const theme = useTheme();
   const pathname = usePathname();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'), {
+    noSsr: true,
+  });
   const hideOnScroll = useScrollTrigger({
     disableHysteresis: false,
     threshold: 96,
@@ -88,8 +92,8 @@ export default function FloatingDockNav({ items = defaultItems }: FloatingDockNa
               ? alpha(theme.palette.background.paper, 0.68)
               : alpha('#FFFFFF', 0.78),
           border: `1px solid ${theme.palette.mode === 'dark'
-              ? alpha(theme.palette.info.main, 0.14)
-              : alpha(theme.palette.primary.main, 0.13)
+            ? alpha(theme.palette.info.main, 0.14)
+            : alpha(theme.palette.primary.main, 0.13)
             }`,
           boxShadow:
             theme.palette.mode === 'dark'
@@ -151,7 +155,9 @@ type DockButtonProps = {
 
 function DockButton({ label, href, icon, active = false }: DockButtonProps) {
   const theme = useTheme();
-  const isSmall = useMediaQuery(theme.breakpoints.down('md'));
+  const isSmall = useMediaQuery(theme.breakpoints.down('md'), {
+    noSsr: true,
+  });
 
   return (
     <Tooltip title={isSmall ? label : ''} arrow>
