@@ -17,7 +17,7 @@ const shared = {
 };
 
 const theme = createTheme({
-  cssVariables: true,
+  cssVariables: { colorSchemeSelector: 'data' },
   colorSchemes: {
     light: {
       palette: {

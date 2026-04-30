@@ -3,10 +3,11 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { Roboto } from 'next/font/google';
-import { ThemeProvider, CssBaseline } from '@mui/material';
-import theme from '../theme';
-import FloatingDockNav from '@/components/floatingMenu';
+import { ThemeProvider, CssBaseline, InitColorSchemeScript } from '@mui/material';
+import theme from '../theme/theme';
 import { geist, inter } from './fonts';
+import SiteShell from '@/components/SiteShell';
+import ThemeRegistry from '@/components/ThemeRegistry';
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -63,21 +64,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${roboto.variable} ${geistSans.variable} ${geistMono.variable} ${geist.variable} ${inter.variable}h-full antialiased`}
+      className={`${roboto.variable} ${geistSans.variable} ${geistMono.variable} ${geist.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-
-
+        <InitColorSchemeScript attribute="data" defaultMode="dark" />
+        <ThemeRegistry>
+          <SiteShell>
             {children}
-            <FloatingDockNav
-
-            />
-
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+          </SiteShell>
+        </ThemeRegistry>
       </body>
     </html>
   );
