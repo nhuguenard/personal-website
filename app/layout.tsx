@@ -5,6 +5,7 @@ import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
 
 import ThemeRegistry from '@/components/ThemeRegistry';
 import SiteShell from '@/components/SiteShell';
+import { Analytics } from "@vercel/analytics/next"
 
 const geist = Geist({
   subsets: ['latin'],
@@ -67,6 +68,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body>
+        <Analytics/>
         <InitColorSchemeScript attribute="data" defaultMode="dark" />
 
         <ThemeRegistry>
