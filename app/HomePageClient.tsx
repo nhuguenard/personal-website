@@ -128,7 +128,7 @@ function HeroSection() {
           <Grid size={{ xs: 12, md: 7 }}>
             <Stack spacing={3}>
               <Chip
-                label="Staff / Principal Engineer • Systems Architect"
+                label="Principal Software Engineer • Systems Architect • Expert Debugger"
                 color="secondary"
                 sx={(theme) => ({
                   alignSelf: 'flex-start',
@@ -149,19 +149,20 @@ function HeroSection() {
                     maxWidth: 820,
                   }}
                 >
-                  Building scalable systems with a{' '}
+                  I design and improve{' '}
                   <Box
                     component="span"
                     sx={{
-                      background: 'linear-gradient(135deg, #6366F1 0%, #A855F7 52%, #22D3EE 100%)',
+                      background:
+                        'linear-gradient(135deg, #6366F1 0%, #A855F7 52%, #22D3EE 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       backgroundClip: 'text',
                     }}
                   >
-                    modern, AI-forward
+                    complex software systems
                   </Box>{' '}
-                  mindset.
+                  through architecture, debugging, and performance.
                 </Typography>
 
                 <Typography
@@ -169,7 +170,7 @@ function HeroSection() {
                   color="text.secondary"
                   sx={{ maxWidth: 740, fontWeight: 400, lineHeight: 1.55 }}
                 >
-                  I’m Nick Huguenard, a principal software engineer specializing in system architecture, debugging, and performance.
+                  I’m Nick Huguenard, a principal-level software engineer who helps teams make enterprise software more reliable, maintainable, and scalable.
                 </Typography>
               </Stack>
 
