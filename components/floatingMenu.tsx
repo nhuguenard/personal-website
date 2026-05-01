@@ -26,6 +26,7 @@ import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import { useColorScheme } from '@mui/material/styles';
 import WorkspacesRoundedIcon from '@mui/icons-material/WorkspacesRounded';
+import ExtensionRoundedIcon from '@mui/icons-material/ExtensionRounded';
 
 export type FloatingDockItem = {
   label: string;
@@ -42,8 +43,8 @@ const defaultItems: FloatingDockItem[] = [
   { label: 'Home', href: '/', icon: <HomeRoundedIcon fontSize="small" /> },
   { label: 'About', href: '/about', icon: <PersonRoundedIcon fontSize="small" /> },
   { label: 'Experience', href: '/experience', icon: <WorkRoundedIcon fontSize="small" /> },
-  { label: 'Projects', href: '/projects', icon: <WorkspacesRoundedIcon fontSize="small" /> },
   { label: 'Resume', href: '/resume', icon: <DescriptionRoundedIcon fontSize="small" /> },
+  { label: 'Projects', href: '/projects', icon: <WorkspacesRoundedIcon fontSize="small" /> },
   { label: 'Contact', href: '/contact', icon: <MailRoundedIcon fontSize="small" /> },
 ];
 
